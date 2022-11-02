@@ -9,13 +9,13 @@ import javax.persistence.Id;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String firstName;
     private String lastName;
-    private String gender;
     private int age;
+    private String gender;
+
 
     public User(Long id, String firstName, String lastName, int age, String gender) {
         this.id = id;
@@ -30,9 +30,6 @@ public class User {
         this.lastName = lastName;
         this.age = age;
         this.gender = gender;
-    }
-
-    public User() {
     }
 
     @Override
