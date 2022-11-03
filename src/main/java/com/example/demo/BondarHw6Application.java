@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class BondarHw6Application implements CommandLineRunner{
 	@Autowired
 	public Menu menu;
-
+	@Autowired
 	public static void main(String[] args) {
 		SpringApplication.run(BondarHw6Application.class, args);
 	}

@@ -3,7 +3,6 @@ package com.example.demo.menu;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import java.util.Scanner;
 
 @Repository
@@ -27,11 +26,16 @@ public class MenuImplements implements Menu {
           
           0. Exit
           
+          (づ｡◕‿‿◕｡)づ
+          ༼ つ ಥ_ಥ ༽つ
+          ( ͡° ͜ʖ ͡°)
+          
           """};
 
     @Override
     public void showMenu() {
         showItems(items);
+        System.out.print("Your number is: ");
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -51,10 +55,10 @@ public class MenuImplements implements Menu {
                     userRepository.findUserByFirstAndLastName();
                     showMenu();
                 case 5:
-                    userRepository.deleteId();
+                    userRepository.deleteByFirstAndLastName();
                     showMenu();
                 case 6:
-                    userRepository.deleteByFirstAndLastName();
+                    userRepository.deleteId();
                     showMenu();
                 case 7:
                     userRepository.getAllUsers().forEach(System.out::println);

@@ -23,8 +23,6 @@ public class UserRepository {
 
     @Transactional
     public void saveUser() {
-        System.out.println("Enter user id: ");
-        Long inputId = scanner.nextLong();
 
         System.out.println("Enter user first name: ");
         String inputFirstName = scanner.next();
@@ -38,14 +36,14 @@ public class UserRepository {
         System.out.println("Enter user gender: ");
         String inputGender = scanner.next();
 
-        entityManager.persist(new User(inputId, inputFirstName, inputLastName, inputAge, inputGender));
+        entityManager.persist(new User(inputFirstName, inputLastName, inputAge, inputGender));
 
         System.out.println("Inputted user is added to table.");
     }
 
     @Transactional
     public void updateUser() {
-        System.out.println("User id: ");
+        System.out.println("Enter user id what you want to update".toUpperCase());
         Long inputId = scanner.nextLong();
         User user = findId(inputId);
         if (user == null) {
@@ -66,6 +64,8 @@ public class UserRepository {
             String inputGender = scanner.next();
 
             entityManager.merge(new User(inputId, inputFirstName, inputLastName, inputAge, inputGender));
+
+            System.out.println("User updated.");
         }
     }
 
@@ -97,6 +97,10 @@ public class UserRepository {
 
         System.out.println("Enter user last name: ");
         String inputLastName = scanner.next();
+
+        Query selectByFirstNameAndLastName = entityManager.createQuery("SELECT user FROM User user WHERE user.firstName =: firstName AND user.lastName =: lastName");
+        selectByFirstNameAndLastName.setParameter("firstName", inputFirstName);
+        selectByFirstNameAndLastName.setParameter("lastName", inputLastName);
 
         User user = findByFirstAndLastName(inputFirstName, inputLastName);
 

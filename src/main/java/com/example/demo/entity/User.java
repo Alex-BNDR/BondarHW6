@@ -16,16 +16,15 @@ public class User {
     private int age;
     private String gender;
 
-
-    public User(Long id, String firstName, String lastName, int age, String gender) {
-        this.id = id;
+    public User(String firstName, String lastName, int age, String gender) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.gender = gender;
     }
 
-    public User(String firstName, String lastName, int age, String gender) {
+    public User(Long id,String firstName, String lastName, int age, String gender) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
